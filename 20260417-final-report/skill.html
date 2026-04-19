@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINDTAIL V23.0 總資產指揮中心 | 技術摘要</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #1B263B;
+            color: #334155;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        main {
+            position: relative;
+        }
+
+        .btn-return {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #f8fafc;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .btn-return:hover {
+            background-color: #2D6A4F;
+            color: white;
+            border-color: #2D6A4F;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: -1rem;
+            top: 10%;
+            height: 80%;
+            width: 4px;
+            background-color: #2D6A4F;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 640px) {
+            h2::before {
+                left: -0.75rem;
+            }
+
+            .btn-return {
+                top: 0.75rem;
+                right: 0.75rem;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="py-8 px-4 sm:px-6 lg:px-8">
+
+    <main class="max-w-3xl mx-auto bg-white rounded-xl shadow-md overflow-hidden border border-slate-200">
+
+        <a href="index.html" class="btn-return">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+            </svg>
+            返回首頁
+        </a>
+
+        <div class="h-2 w-full" style="background-color: #2D6A4F;"></div>
+
+        <article class="p-6 sm:p-10">
+
+            <header class="mb-10 border-b border-slate-200 pb-6">
+                <h1 class="text-2xl sm:text-3xl font-bold text-slate-800 tracking-tight mb-2">
+                    FINDTAIL V23.0 總資產指揮中心
+                </h1>
+                <p class="text-lg text-slate-500 font-medium tracking-widest">技術摘要</p>
+            </header>
+
+            <section class="mb-10">
+                <h2 class="text-xl font-bold text-slate-800 mb-4 ml-4 sm:ml-4">1. 專案概述</h2>
+                <p class="text-slate-600 text-justify">
+                    FINDTAIL 是一款專為行動裝置優化的單頁 Web 應用程式，以純 HTML + CSS + 原生 JavaScript
+                    開發，無後端框架。主要提供資產總覽、即時報價、配置圖表、歷史績效、部位調整與交易記帳等功能。透過 Cloudflare Workers 實現雲端資料同步與持久化，打造即時互動的投資組合管理工具。
+                </p>
+            </section>
+
+            <section class="mb-10">
+                <h2 class="text-xl font-bold text-slate-800 mb-4 ml-4 sm:ml-4">2. 技術架構</h2>
+                <div class="bg-slate-50 rounded-lg p-5 border border-slate-100">
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-start">
+                            <span class="font-semibold text-slate-700 min-w-[5rem] mr-2">前端技術：</span>
+                            <span>HTML、CSS、原生 JavaScript、Bootstrap</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-semibold text-slate-700 min-w-[5rem] mr-2">圖表套件：</span>
+                            <span>Chart.js</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-semibold text-slate-700 min-w-[5rem] mr-2">UI 資源：</span>
+                            <span>Google Fonts（Inter、Noto Sans TC、Noto Serif TC）與 Font Awesome 6</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-semibold text-slate-700 min-w-[5rem] mr-2">資料儲存：</span>
+                            <span>Cloudflare KV + 自訂 Workers 端點</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-semibold text-slate-700 min-w-[5rem] mr-2">報價來源：</span>
+                            <span>TWSE 開放資料 + Yahoo Finance API（經 Workers Proxy 處理 CORS）</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-semibold text-slate-700 min-w-[5rem] mr-2">部署方式：</span>
+                            <span>單一 <code
+                                    class="bg-slate-200 px-1 py-0.5 rounded text-sm font-mono text-slate-800">index.html</code>
+                                靜態檔案</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="font-semibold text-slate-700 min-w-[5rem] mr-2">製作流程：</span>
+                            <span>GOOGLE GEMINI 3.1 pro 協作</span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mb-10">
+                <h2 class="text-xl font-bold text-slate-800 mb-4 ml-4 sm:ml-4">3. 核心功能</h2>
+                <ul class="list-disc list-inside space-y-2 text-slate-600 pl-1 sm:pl-2">
+                    <li><strong class="text-slate-700 font-medium">英雄總覽區：</strong>動態顯示總資產、成本、報酬率與今日損益（含數字動畫）。</li>
+                    <li><strong class="text-slate-700 font-medium">資產卡片：</strong>台股、美股、現金區塊，支援展開詳細列表與迷你配置長條圖。</li>
+                    <li><strong class="text-slate-700 font-medium">即時報價與圖表：</strong>圓餅圖呈現資產配置，線圖顯示趨勢與現金水位。</li>
+                    <li><strong class="text-slate-700 font-medium">部位調整與交易記帳：</strong>支援買賣、配息，自動計算加權平均成本，具歷史交易管理功能。</li>
+                    <li><strong class="text-slate-700 font-medium">歷史績效：</strong>整合 Yahoo Finance 6個月 K 線資料，計算多週期漲跌幅。
+                    </li>
+                </ul>
+            </section>
+
+            <section class="mb-10">
+                <h2 class="text-xl font-bold text-slate-800 mb-4 ml-4 sm:ml-4">4. 資料管理與設計特色</h2>
+                <p class="text-slate-600 text-justify mb-3">
+                    全域 <code class="bg-slate-100 px-1 py-0.5 rounded text-sm font-mono text-slate-800">appData</code>
+                    物件管理狀態，透過加密金鑰與 Cloudflare KV 實現 Serverless 雲端同步。
+                </p>
+                <div class="border-l-4 border-slate-300 pl-4 py-1 text-slate-600 italic mt-4">
+                    <strong class="text-slate-700 font-medium not-italic">專案亮點：</strong>
+                    輕量化、高效能（Promise.all 並行請求）、響應式設計（最大寬度 480px）、行動裝置優先。安全性採用自訂 Header 驗證與 Workers Proxy 保護資料存取。
+                </div>
+            </section>
+
+        </article>
+
+        <footer
+            class="bg-slate-50 px-6 py-4 border-t border-slate-200 text-sm text-slate-500 flex flex-col sm:flex-row justify-between items-center">
+            <div class="mb-2 sm:mb-0">文件編號：TECH-V23-2026</div>
+            <div>更新日期：2026年4月17日</div>
+        </footer>
+
+    </main>
+
+</body>
+
+</html>
